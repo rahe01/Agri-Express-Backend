@@ -1,0 +1,34 @@
+
+
+enum UserRole {
+  FARMER
+  WHOLESALER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  PENDING
+  DEACTIVATED
+  BANNED        
+}
+enum ProductStatus {
+  ACTIVE
+  SOLD
+  EXPIRED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+}
+
+
+enum OrderStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+  SHIPPED
+}

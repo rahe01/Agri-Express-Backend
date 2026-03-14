@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Email Verification - DineSphere</title>
+</head>
+
+<body style="margin:0; padding:0; background-color:#f3f4f6; font-family: Arial, sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0; background-color:#f3f4f6;">
+    <tr>
+      <td align="center">
+
+        <!-- Card Container -->
+        <table width="100%" cellpadding="0" cellspacing="0" 
+          style="max-width:500px; background:#ffffff; border-radius:14px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" 
+              style="background: linear-gradient(135deg, #f97316, #ea580c); padding:30px 20px;">
+              
+              <h1 style="margin:0; color:#ffffff; font-size:24px;">
+                DineSphere 🍽️
+              </h1>
+              <p style="margin:5px 0 0 0; color:#ffe7d6; font-size:13px;">
+                Smart Dining Experience
+              </p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:35px 30px; text-align:center;">
+
+              <h2 style="margin-top:0; color:#111827;">
+                Verify Your Email
+              </h2>
+
+              <p style="color:#6b7280; font-size:14px;">
+                Hello <strong><%= name %></strong>,
+              </p>
+
+              <p style="color:#6b7280; font-size:14px; margin-bottom:25px;">
+                Please use the verification code below to complete your registration.
+              </p>
+
+              <!-- OTP Box -->
+              <div style="
+                display:inline-block;
+                padding:18px 30px;
+                background:#fff7ed;
+                border:2px dashed #f97316;
+                border-radius:12px;
+                font-size:30px;
+                font-weight:bold;
+                letter-spacing:8px;
+                color:#ea580c;
+              ">
+                <%= otp %>
+              </div>
+
+              <p style="color:#9ca3af; font-size:13px; margin-top:25px;">
+                This code will expire in <strong>10 minutes</strong>.
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background:#f9fafb; padding:20px; text-align:center; font-size:12px; color:#9ca3af;">
+              If you didn’t request this email, you can safely ignore it.<br><br>
+              © <%= new Date().getFullYear() %> DineSphere. All rights reserved.
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
