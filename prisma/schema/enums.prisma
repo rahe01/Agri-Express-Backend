@@ -1,17 +1,14 @@
 
-enum UserRole {
-  FARMER
-  WHOLESALER
-  ADMIN
+
+enum Role{
+    USER
+    VENDOR
+    ADMIN
 }
 
-enum UserStatus {
-  ACTIVE
-  SUSPENDED
-  PENDING
-  DEACTIVATED
-  BANNED        
+enum UserStatus{
+    ACTIVE
+    BLOCKED
+    SUSPENDED
+    DELETED
 }
-
-
-

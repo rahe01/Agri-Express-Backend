@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
-import {  UserRole, UserStatus } from "../../generated/prisma/enums";
+import { Role, UserStatus } from "../../generated/prisma/enums";
 import { bearer, emailOTP } from "better-auth/plugins";
 import { sendEmail } from "../utils/email";
 
@@ -12,7 +12,7 @@ export const auth = betterAuth({
 
   emailAndPassword: {
     enabled: true,
-    requireEmailVerification: true,
+    // requireEmailVerification: true,
   },
 
   user: {
@@ -20,7 +20,7 @@ export const auth = betterAuth({
       role: {
         type: "string",
         required: true,
-        defaultValue: UserRole.FARMER,
+        defaultValue: Role.USER,
       },
       status: {
         type: "string",
@@ -40,30 +40,55 @@ export const auth = betterAuth({
     },
   },
 
-  plugins: [
+/* plugins: [
     bearer(),
     emailOTP({
       overrideDefaultEmailVerification: true,
       async sendVerificationOTP({ email, otp, type }) {
         if (type === "email-verification") {
-          const user = await prisma.user.findUnique({ where: { email } });
-          if (user && !user.emailVerified) {
-            try {
-              await sendEmail({
-                to: email,
-                subject: "Verify your email",
-                templateName: "otp",
-                templateData: { name: user.name, otp },
-              });
-              console.log(`OTP sent to ${email}`);
-            } catch (err) {
-              console.error("Failed to send OTP email:", err);
+          const user = await prisma.user.findUnique({
+            where: {
+              email
             }
+          })
+          if (user && !user.emailVerified) {
+            sendEmail({
+              to: email,
+              subject: "Verify your email",
+              templateName: "otp",
+              templateData: {
+                name: user.name,
+                otp
+              }
+            })
           }
         }
+        else if (type === "forget-password") {
+          const user = await prisma.user.findUnique({
+            where: {
+              email
+            }
+          })
+          if (user) {
+            sendEmail({
+              to: email,
+              subject: "Reset your password",
+              templateName: "otp",
+              templateData: {
+                name: user.name,
+                otp
+              }
+            })
+          }
+
+
+        }
+
       },
-      expiresIn: 10 * 60, // 10 minutes
+      expiresIn: 2 * 60,
       otpLength: 6,
-    }),
-  ],
+
+
+    })
+  ],*/
 });
