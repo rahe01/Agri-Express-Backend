@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { Role } from "../../../generated/prisma/enums";
+import { UserRole } from "../../../generated/prisma/enums";
+
 
 const strongPasswordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/;
@@ -30,9 +31,9 @@ const registerUserZodSchema = z.object({
         }),
 
     role: z
-        .enum(Role)
+        .enum(UserRole)
         .optional()
-        .default("USER"),
+        .default("FARMER"),
 });
 
 

@@ -8,11 +8,14 @@ import { SendEmailOptions } from '../interface/email.interface';
 const transporter = nodemailer.createTransport({
     host: envConfig.EMAIL_SENDER_SMTP_HOST,
     port: Number(envConfig.EMAIL_SENDER_SMTP_PORT),
-    secure: true,
+    secure: false,
     auth: {
         user: envConfig.EMAIL_SENDER_SMTP_USER,
         pass: envConfig.EMAIL_SENDER_SMTP_PASS,
     },
+    tls: {
+        rejectUnauthorized: false, // development/test only
+    }
 });
 
 
